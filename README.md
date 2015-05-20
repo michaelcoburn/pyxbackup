@@ -31,14 +31,15 @@ A file called ``pyxbackup.cnf`` can store configuration values. By default, the 
 Below are some valid options recognized from the configuration file:
 
     [pyxbackup]
+    ## USER INFORMATION ## 
     # MySQL credentials that can be used to the instance
     # being backed up, only user and pass are used at the 
     # time of this writing
-    mysql_host = 127.0.0.1
     mysql_user = msandbox
     mysql_pass = msandbox
-    mysql_port = 56190
-    mysql_sock = /tmp/mysql.sock
+    # mysql_host = 127.0.0.1
+    # mysql_port = 56190
+    # mysql_sock = /tmp/mysql.sock
     
     # Instructs the script to run prepare on a copy of the backup
     # with redo-only. The script will maintain a copy of every
@@ -46,18 +47,20 @@ Below are some valid options recognized from the configuration file:
     # until the next full backup is executed
     apply_log = 1
 
+    ## COMPRESSION ## 
     # Whether to compress backups
     compress = 1
     # What compression tool, supports gzip and qpress
     compress_with = gzip
 
-    # Send abckup failure notifications to these addresses, separated by comma
+    # Send backup failure notifications to these addresses,
+    # separated by commas
     notify_by_email = myemail@example.com
     # Send backup completion notifications to these adresses,
-    # separated by comma
+    # separated by commas
     notify_on_success = myemail@example.com
 
-    # Where to stor raw (compressed) backups on the local directory
+    # Where to store raw (compressed) backups on the local directory
     # If --remote-push-only is specified, this is still needed but
     # they will not contain the actual backups, only meta information
     # and logs will remain to keep the backup workflow going
